@@ -33,11 +33,23 @@ def in_oder_print(node):
         print(node.data, " -> ", end="")
         in_oder_print(node.right)
 
+
 def post_order_print(node):
     if node:
         post_order_print(node.left)
         post_order_print(node.right)
         print(node.data, " -> ", end="")
+
+
+def bfs_print(node):
+    queue = [node]
+    while len(queue) > 0:
+        pop = queue.pop(0)
+        print(pop.data, "->", end="")
+        if pop.left is not None:
+            queue.append(pop.left)
+        if pop.right is not None:
+            queue.append(pop.right)
 
 
 print("Pre Order")
@@ -48,3 +60,6 @@ in_oder_print(tree.root)
 
 print("\nPost Order")
 post_order_print(tree.root)
+
+print("\nBFS")
+bfs_print(tree.root)
